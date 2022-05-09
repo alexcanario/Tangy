@@ -1,0 +1,34 @@
+﻿@page "/learnBlazor/demoProduct"
+@using Tangy.WebServer.Pages.LearnBlazor.Components
+
+<h2 class="text-primary">Demo Product</h2>
+
+<div class="border p-2 mt-2" style="background-color:azure">
+    <div class="row">
+        @foreach (var p in _products)
+        {
+            <div class="bg-light border p-2 col-5">
+                <h4 class="text-secondary">Product - @p.Id</h4>
+                Name - @p.Name
+                <br />
+                Show properties: <input type="checkbox" @bind-value=p.IsActive checked=@(p.IsActive ? "checked" : null)>
+
+                @if(p.IsActive)
+                {
+                    foreach(var prop in p.ProductProperties)
+                    {
+                        <p>@prop.Key - @prop.Value</p>
+                    }
+                }
+                <br/>
+                <_EditDeleteButton>
+
+                </_EditDeleteButton>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+}
