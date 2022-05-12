@@ -5,6 +5,9 @@ namespace Tangy.WebServer.Pages.LearnBlazor
     public partial class DemoProduct
     {
         private List<Product> _products = new();
+        private int SelectedFavoriteCount { get; set; } = 0;
+        private string LastProductSelected { get; set; } = string.Empty;
+
         protected override void OnInitialized()
         {
             _products.Add(new Product
@@ -34,6 +37,11 @@ namespace Tangy.WebServer.Pages.LearnBlazor
                     new ProductProperties { Id = 1, Key = "Color", Value = "White" },
                 }
             });
+        }
+
+        protected void ProductSelectedChange(string productName)
+        {
+            LastProductSelected = productName;
         }
     }
 }
